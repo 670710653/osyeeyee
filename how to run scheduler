@@ -1,0 +1,5 @@
+java Main <workload.csv> <fcfs|priority> <workers> <printerPermits> <databasePermits>
+
+example
+
+java Main jobs_standard.csv priority 3 1 2
