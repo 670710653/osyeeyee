@@ -1,0 +1,12 @@
+javac -encoding UTF-8 ZeroCopyServer.java ZeroCopyClient.java
+
+# สร้างไฟล์ทดสอบ (Linux/macOS)
+mkdir files && dd if=/dev/urandom of=files/test.bin bs=1M count=1024
+# Windows: fsutil file createnew files\test.bin 1073741824
+
+# Terminal 1: server  (port=9000, rootDir=./files)
+java ZeroCopyServer 9000 files
+
+# Terminal 2: client
+java ZeroCopyClient localhost 9000 list
+java ZeroCopyClient localhost 9000 get test.bin 10 20 3   # 10 ช่วง, 20 workers, รัน 3 รอบ
