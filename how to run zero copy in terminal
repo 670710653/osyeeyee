@@ -6,6 +6,7 @@ java ZeroCopyServer 9000 files
 # หน้าต่างที่ 2: Client
 # สร้างไฟล์ทดสอบ Windows:
 fsutil file createnew files\test.bin 1073741824
+fsutil file createnew files\test_2GB.bin 2147483648
 
 java ZeroCopyClient localhost 9000 list
 java ZeroCopyClient localhost 9000 get test.bin 10 20 3
